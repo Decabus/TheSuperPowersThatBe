@@ -5,12 +5,12 @@ using System.Collections;
 public class PlayerResourceManager : MonoBehaviour {
 
 	Text playerResourcesText;
-	private int playerResourceAmount=0;
-	private bool bussSelected;
-	private bool civSelected;
-	private bool recSelected;
-	private bool milSelected;
-	private bool medSelected;
+	public static int playerResourceAmount=0;
+	public static bool bussSelected;
+	public static bool civSelected;
+	public static bool recSelected;
+	public static bool milSelected;
+	public static bool medSelected;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +29,8 @@ public class PlayerResourceManager : MonoBehaviour {
 		militarySelected();
 
 		mediaSelected();
+
+		playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
 	}
 
 	void businessSelected () {
@@ -36,6 +38,7 @@ public class PlayerResourceManager : MonoBehaviour {
 		if (bussSelected == true) {
 			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
 			playerResourceAmount = playerResourceAmount + DisplayBusinessOffer.bussOfferAmount;
+			//bussSelected = false;
 		}
 	}
 
