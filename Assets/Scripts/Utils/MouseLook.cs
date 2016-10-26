@@ -29,8 +29,26 @@ public class MouseLook : MonoBehaviour {
 
 	Quaternion originalRotation;
 
+	GameManager gameManager;
+
+	void Start ()
+	{		
+		gameManager = GameObject.Find("_GameManager").GetComponent<GameManager>();
+
+		Rigidbody rb = GetComponent<Rigidbody>();	
+		if (rb)
+			rb.freezeRotation = true;
+		originalRotation = transform.localRotation;
+	}
+
 	void Update ()
 	{
+		if (gameManager.gameState < 1) {
+			Look ();
+		}
+	}
+
+	void Look(){
 		if (axes == RotationAxes.MouseXAndY)
 		{			
 			rotAverageY = 0f;
@@ -111,13 +129,7 @@ public class MouseLook : MonoBehaviour {
 		}
 	}
 
-	void Start ()
-	{		
-		Rigidbody rb = GetComponent<Rigidbody>();	
-		if (rb)
-			rb.freezeRotation = true;
-		originalRotation = transform.localRotation;
-	}
+
 
 	public static float ClampAngle (float angle, float min, float max)
 	{
