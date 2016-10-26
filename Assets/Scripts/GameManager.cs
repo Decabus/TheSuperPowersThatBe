@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour{
 
+	public string luke = "fag";
+
 	//Use this for initialization 
 	void Start(){
 		
