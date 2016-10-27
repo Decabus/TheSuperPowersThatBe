@@ -45,7 +45,7 @@ public class PlayrLookAt : MonoBehaviour{
 			if (hit.collider.tag == "CommenceButton") {
 				//TODO: Button changes colour on scroll, and on click down.
 				if (Input.GetMouseButtonUp(0)) {
-					Debug.Log ("IT BEGINS");
+					//Debug.Log ("IT BEGINS");
 					gameManager.gameState++; 
 				}
 			}
