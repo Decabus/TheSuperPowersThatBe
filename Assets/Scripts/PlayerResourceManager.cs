@@ -18,6 +18,7 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	public static int playerResourceAmount=0;
 	public static int cost=0;
+<<<<<<< HEAD
 
 	public int globalBusinessAffiliation=0;
 	public int globalCivilAffiliation=0;
@@ -27,6 +28,8 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	public int playerAffiliation=0;
 
+=======
+>>>>>>> master
 	//public static bool bussSelected;
 	//public static bool civSelected;
 	//public static bool recSelected;
@@ -52,6 +55,7 @@ public class PlayerResourceManager : MonoBehaviour {
 
 		mediaSelected();
 
+<<<<<<< HEAD
 		districtPolitician1Selected();
 		try{
 			playerResourcesText.text="Credits: "+playerResourceAmount;
@@ -65,6 +69,13 @@ public class PlayerResourceManager : MonoBehaviour {
 		cost = DistrictPoliticians.politician1Cost;
 
 		//onClick();
+=======
+		districtPoliticianSelected();
+
+		playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+
+		cost = DistrictPoliticians.politician1Cost;
+>>>>>>> master
 	}
 
 	void businessSelected () {
@@ -131,6 +142,18 @@ public class PlayerResourceManager : MonoBehaviour {
 			DisplayMediaOffer.offerSelected = false;
 		}
 	}
+<<<<<<< HEAD
+=======
+
+	void districtPoliticianSelected () {
+		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
+			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician1Cost;
+			DistrictPoliticians.offerSelected = false;
+		}
+	}
+}
+>>>>>>> master
 
 	void districtPolitician1Selected () {
 		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {

@@ -17,9 +17,15 @@ public class DistrictPoliticians : MonoBehaviour {
 		//Debug.Log (randomNumber);
 
 		politician1Text = gameObject.GetComponent<Text>();
+<<<<<<< HEAD
 		politician1Text.text="Shady Man \n \n Bribe Cost: " + politician1Cost;
 	}
 
+=======
+		politician1Text.text="We will spread propoganda : " + politician1Cost;
+	}
+	
+>>>>>>> master
 	// Update is called once per frame
 	void Update () {
 		//offerText.text="Offer Amount : " + bussOfferAmount;
@@ -55,4 +61,8 @@ public class DistrictPoliticians : MonoBehaviour {
 	//		offerText.text="How does : " + bussOfferAmount +" sound to you?";
 	//	}
 	//}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
