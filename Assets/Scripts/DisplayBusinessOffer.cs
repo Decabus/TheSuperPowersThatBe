@@ -45,7 +45,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 			bizAmout = 1;
 			awarenessAmount = 0;
 			//offerText = gameObject.GetComponent<Text>();
-			offerText.text="Offer Amount : " + bussOfferAmount;
+			offerText.text="Offer Amount \n dave \n steve \n pete : " + bussOfferAmount;
 		}
 	}
 
@@ -56,7 +56,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 			bizAmout = 2;
 			awarenessAmount = 5;
 			//offerText = gameObject.GetComponent<Text>();
-			offerText.text="We will offer you : " + bussOfferAmount;
+			offerText.text="Offer Amount \n dave \n steve \n pete :"  + bussOfferAmount;
 		}
 	}
 
@@ -67,7 +67,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 			bizAmout = 3;
 			awarenessAmount = 3;
 			//offerText = gameObject.GetComponent<Text>();
-			offerText.text="How does : " + bussOfferAmount +" sound to you?";
+			offerText.text="Offer Amount \n dave \n steve \n pete : " + bussOfferAmount +" sound to you?";
 		}
 	}
 }
