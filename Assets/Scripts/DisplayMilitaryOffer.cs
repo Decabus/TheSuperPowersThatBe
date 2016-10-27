@@ -6,6 +6,9 @@ public class DisplayMilitaryOffer : MonoBehaviour {
 
 	Text offerText;
 	public static int milOfferAmount=0;
+	public static int civAmout;
+	public static int bizAmout;
+	public static int awarenessAmount;
 	public static bool offerSelected = false;
 	public int randomNumber;
 
@@ -33,6 +36,9 @@ public class DisplayMilitaryOffer : MonoBehaviour {
 	void offerVersion1 () {
 		if (randomNumber == 1) {
 			milOfferAmount = 100;
+			civAmout = 2;
+			bizAmout = 0;
+			awarenessAmount = 2;
 			//offerText = gameObject.GetComponent<Text>();
 			offerText.text="Offer Amount : " + milOfferAmount;
 		}
@@ -41,6 +47,9 @@ public class DisplayMilitaryOffer : MonoBehaviour {
 	void offerVersion2 () {
 		if (randomNumber == 2) {
 			milOfferAmount = 150;
+			civAmout = 2;
+			bizAmout = -1;
+			awarenessAmount = 4;
 			//offerText = gameObject.GetComponent<Text>();
 			offerText.text="We will offer you : " + milOfferAmount;
 		}
@@ -49,6 +58,9 @@ public class DisplayMilitaryOffer : MonoBehaviour {
 	void offerVersion3 () {
 		if (randomNumber == 3) {
 			milOfferAmount = 70;
+			civAmout = 0;
+			bizAmout = 3;
+			awarenessAmount = 0;
 			//offerText = gameObject.GetComponent<Text>();
 			offerText.text="How does : " + milOfferAmount +" sound to you?";
 		}

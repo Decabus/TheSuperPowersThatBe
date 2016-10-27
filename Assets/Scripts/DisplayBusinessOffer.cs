@@ -6,6 +6,9 @@ public class DisplayBusinessOffer : MonoBehaviour {
 
 	Text offerText;
 	public static int bussOfferAmount=0;
+	public static int civAmout;
+	public static int bizAmout;
+	public static int awarenessAmount;
 	public static bool offerSelected = false;
 	//public int [] values;
 	public int randomNumber;
@@ -38,6 +41,9 @@ public class DisplayBusinessOffer : MonoBehaviour {
 	void offerVersion1 () {
 		if (randomNumber == 1) {
 			bussOfferAmount = 100;
+			civAmout = -1;
+			bizAmout = 1;
+			awarenessAmount = 0;
 			//offerText = gameObject.GetComponent<Text>();
 			offerText.text="Offer Amount : " + bussOfferAmount;
 		}
@@ -46,6 +52,9 @@ public class DisplayBusinessOffer : MonoBehaviour {
 	void offerVersion2 () {
 		if (randomNumber == 2) {
 			bussOfferAmount = 150;
+			civAmout = -2;
+			bizAmout = 2;
+			awarenessAmount = 5;
 			//offerText = gameObject.GetComponent<Text>();
 			offerText.text="We will offer you : " + bussOfferAmount;
 		}
@@ -54,6 +63,9 @@ public class DisplayBusinessOffer : MonoBehaviour {
 	void offerVersion3 () {
 		if (randomNumber == 3) {
 			bussOfferAmount = 70;
+			civAmout = -1;
+			bizAmout = 3;
+			awarenessAmount = 3;
 			//offerText = gameObject.GetComponent<Text>();
 			offerText.text="How does : " + bussOfferAmount +" sound to you?";
 		}

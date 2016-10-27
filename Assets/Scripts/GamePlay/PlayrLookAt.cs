@@ -63,10 +63,8 @@ public class PlayrLookAt : MonoBehaviour{
 					toggleMilitaryBool();
 				}
 			} else if (hit.collider.tag == "MediaButton") {
-				//TODO: Button changes colour on scroll, and on click down.
 				if (Input.GetMouseButtonUp(0)) {
 					Debug.Log ("PRESSED A MEDIA BOTTON");
-					//TODO: Either return new dialogue or destroy the canvas.
 					toggleMediaBool();
 				}
 			}
