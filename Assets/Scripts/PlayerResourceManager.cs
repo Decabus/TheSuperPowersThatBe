@@ -35,7 +35,7 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		playerResourcesText = gameObject.GetComponent<Text>();
+		//playerResourcesText = gameObject.GetComponent<Text>();
 		//playerResourcesText.text="Credits: "+playerResourceAmount;
 		gameManager = GameObject.Find("_GameManager").GetComponent<GameManager>();
 	}
@@ -68,7 +68,7 @@ public class PlayerResourceManager : MonoBehaviour {
 		//onClick();
 		districtPoliticianSelected();
 
-		playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+		//playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
 
 		cost = DistrictPoliticians.politician1Cost;
 	}
