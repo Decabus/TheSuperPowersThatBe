@@ -12,7 +12,7 @@ public class DisplayResourcesOffer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		randomNumber = Random.Range (1, 3);
-		Debug.Log (randomNumber);
+		//Debug.Log (randomNumber);
 
 		offerText = gameObject.GetComponent<Text>();
 		//offerText.text="Offer Amount : " + recOfferAmount;

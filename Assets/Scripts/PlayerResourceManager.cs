@@ -32,8 +32,11 @@ public class PlayerResourceManager : MonoBehaviour {
 		mediaSelected();
 
 		districtPolitician1Selected();
-
-		playerResourcesText.text="Credits: "+playerResourceAmount;
+		try{
+			playerResourcesText.text="Credits: "+playerResourceAmount;
+		}
+		catch{
+		}
 
 		cost = DistrictPoliticians.politician1Cost;
 
