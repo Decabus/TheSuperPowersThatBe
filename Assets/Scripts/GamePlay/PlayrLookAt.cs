@@ -6,7 +6,19 @@ public class PlayrLookAt : MonoBehaviour{
 	[SerializeField]
 	GameObject canvasLookingAt;
 
+	GameManager gameManager;
+
+	void Start(){
+		gameManager = GameObject.Find("_GameManager").GetComponent<GameManager>();
+	}
+
 	void FixedUpdate(){
+		if (gameManager.gameState < 1) {
+			LookAt ();
+		}
+	}
+
+	void LookAt(){
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
 		RaycastHit hit;
@@ -51,10 +63,8 @@ public class PlayrLookAt : MonoBehaviour{
 					toggleMilitaryBool();
 				}
 			} else if (hit.collider.tag == "MediaButton") {
-				//TODO: Button changes colour on scroll, and on click down.
 				if (Input.GetMouseButtonUp(0)) {
 					Debug.Log ("PRESSED A MEDIA BOTTON");
-					//TODO: Either return new dialogue or destroy the canvas.
 					toggleMediaBool();
 				}
 			} else if (hit.collider.tag == "DistrictPolitician") {
@@ -63,6 +73,14 @@ public class PlayrLookAt : MonoBehaviour{
 					Debug.Log ("PRESSED A POLITICIAN BOTTON");
 					//TODO: Either return new dialogue or destroy the canvas.
 					toggleDistrictPoliticiansBool();
+				}
+			}
+
+			if (hit.collider.tag == "CommenceButton") {
+				//TODO: Button changes colour on scroll, and on click down.
+				if (Input.GetMouseButtonUp(0)) {
+					//Debug.Log ("IT BEGINS");
+					gameManager.gameState++; 
 				}
 			}
 		}

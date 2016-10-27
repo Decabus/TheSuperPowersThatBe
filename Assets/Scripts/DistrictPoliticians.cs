@@ -17,6 +17,9 @@ public class DistrictPoliticians : MonoBehaviour {
 		//Debug.Log (randomNumber);
 
 		politician1Text = gameObject.GetComponent<Text>();
+		politician1Text.text="Shady Man \n \n Bribe Cost: " + politician1Cost;
+	
+		
 		politician1Text.text="We will spread propoganda : " + politician1Cost;
 	}
 	
