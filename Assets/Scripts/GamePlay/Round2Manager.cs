@@ -9,6 +9,12 @@ public class Round2Manager : MonoBehaviour {
 	[SerializeField]
 	private List<GameObject> panels;
 
+	private PlayerResourceManager RS;
+
+	void Start(){
+		RS = GameObject.Find ("_PlayerResourcesManager").GetComponent<PlayerResourceManager> ();
+	}
+
 	public void activatePanel(GameObject panelToActiv){
 		foreach(GameObject i in panels){
 			if (panelToActiv.name == i.name) {
@@ -18,4 +24,6 @@ public class Round2Manager : MonoBehaviour {
 			}
 		}
 	}
+
+
 }

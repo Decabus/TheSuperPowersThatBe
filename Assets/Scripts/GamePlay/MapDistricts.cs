@@ -4,6 +4,11 @@ using System.Collections;
 
 public class MapDistricts : MonoBehaviour{
 
+	public int districtAffiliation;
+
+	private int distBizAff;
+	private int distCivAff;
+
 	[SerializeField]
 	GameObject panel;
 
@@ -14,6 +19,12 @@ public class MapDistricts : MonoBehaviour{
 
 	void Start(){
 		r2M = GameObject.Find ("Stage2Canvas").GetComponent<Round2Manager> ();
+
+		districtAffiliation = Random.Range (30, 60);
+
+		distBizAff = districtAffiliation;
+		distCivAff = 100 - districtAffiliation;
+		Debug.Log (this.name + ": " + distBizAff + "% Biz, " + distCivAff + "% Civ.");
 	}
 
 	void OnMouseOver(){
