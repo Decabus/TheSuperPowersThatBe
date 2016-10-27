@@ -16,8 +16,8 @@ public class DisplayBusinessOffer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//randomNumber = Random.Range (0, 3);
-		//Debug.Log (randomNumber);
+		randomNumber = Random.Range (1, 3);
+		Debug.Log (randomNumber);
 
 		offerText = gameObject.GetComponent<Text>();
 		//offerText.text="Offer Amount : " + bussOfferAmount;
@@ -25,8 +25,6 @@ public class DisplayBusinessOffer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		randomNumber = Random.Range (0, 3);
-		Debug.Log (randomNumber);
 		//offerText.text="Offer Amount : " + bussOfferAmount;
 		offerVersion1();
 		offerVersion2();
