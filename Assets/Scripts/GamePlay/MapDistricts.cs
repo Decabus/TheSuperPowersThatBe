@@ -24,7 +24,7 @@ public class MapDistricts : MonoBehaviour{
 
 		distBizAff = districtAffiliation;
 		distCivAff = 100 - districtAffiliation;
-		Debug.Log (this.name + ": " + distBizAff + "% Biz, " + distCivAff + "% Civ.");
+		//Debug.Log (this.name + ": " + distBizAff + "% Biz, " + distCivAff + "% Civ.");
 	}
 
 	void OnMouseOver(){
