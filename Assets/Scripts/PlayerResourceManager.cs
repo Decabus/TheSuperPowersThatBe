@@ -6,6 +6,7 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	Text playerResourcesText;
 	public static int playerResourceAmount=0;
+	public static int cost=0;
 	//public static bool bussSelected;
 	//public static bool civSelected;
 	//public static bool recSelected;
@@ -15,7 +16,7 @@ public class PlayerResourceManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerResourcesText = gameObject.GetComponent<Text>();
-		playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+		//playerResourcesText.text="Credits: "+playerResourceAmount;
 	}
 	
 	// Update is called once per frame
@@ -30,12 +31,18 @@ public class PlayerResourceManager : MonoBehaviour {
 
 		mediaSelected();
 
-		playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+		districtPolitician1Selected();
+
+		playerResourcesText.text="Credits: "+playerResourceAmount;
+
+		cost = DistrictPoliticians.politician1Cost;
+
+		//onClick();
 	}
 
 	void businessSelected () {
 		if (DisplayBusinessOffer.offerSelected == true) {
-			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+			playerResourcesText.text="Credits: "+playerResourceAmount;
 			playerResourceAmount = playerResourceAmount + DisplayBusinessOffer.bussOfferAmount;
 			DisplayBusinessOffer.offerSelected = false;
 		}
@@ -43,7 +50,7 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	void civilSelected () {
 		if (DisplayCivilOffer.offerSelected == true) {
-			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+			playerResourcesText.text="Credits: "+playerResourceAmount;
 			playerResourceAmount = playerResourceAmount + DisplayCivilOffer.civOfferAmount;
 			DisplayCivilOffer.offerSelected = false;
 		}
@@ -51,7 +58,7 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	void resourcesSelected () {
 		if (DisplayResourcesOffer.offerSelected == true) {
-			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+			playerResourcesText.text="Credits: "+playerResourceAmount;
 			playerResourceAmount = playerResourceAmount + DisplayResourcesOffer.recOfferAmount;
 			DisplayResourcesOffer.offerSelected = false;
 		}
@@ -59,7 +66,7 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	void militarySelected () {
 		if (DisplayMilitaryOffer.offerSelected == true) {
-			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+			playerResourcesText.text="Credits: "+playerResourceAmount;
 			playerResourceAmount = playerResourceAmount + DisplayMilitaryOffer.milOfferAmount;
 			DisplayMilitaryOffer.offerSelected = false;
 		}
@@ -67,10 +74,47 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	void mediaSelected () {
 		  if (DisplayMediaOffer.offerSelected == true) {
-			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+			playerResourcesText.text="Credits: "+playerResourceAmount;
 			playerResourceAmount = playerResourceAmount + DisplayMediaOffer.medOfferAmount;
 			DisplayMediaOffer.offerSelected = false;
 		}
 	}
-}
 
+	void districtPolitician1Selected () {
+		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
+			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician1Cost;
+			DistrictPoliticians.offerSelected = false;
+		}
+	}
+
+	public void onClickBribePolitician1 () {
+		Debug.Log("CLICKING!");
+		DistrictPoliticians.offerSelected = true;
+		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
+			playerResourcesText.text="Credits: "+playerResourceAmount;
+			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician1Cost;
+			DistrictPoliticians.offerSelected = false;
+		}
+	}
+
+	public void onClickBribePolitician2 () {
+		Debug.Log("CLICKING!");
+		DistrictPoliticians.offerSelected = true;
+		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
+			playerResourcesText.text="Credits: "+playerResourceAmount;
+			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician2Cost;
+			DistrictPoliticians.offerSelected = false;
+		}
+	}
+
+	public void onClickBribePolitician3 () {
+		Debug.Log("CLICKING!");
+		DistrictPoliticians.offerSelected = true;
+		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
+			playerResourcesText.text="Credits: "+playerResourceAmount;
+			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician3Cost;
+			DistrictPoliticians.offerSelected = false;
+		}
+	}
+}
