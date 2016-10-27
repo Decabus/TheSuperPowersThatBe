@@ -18,4 +18,8 @@ public class DisplayResourcesOffer : MonoBehaviour {
 	void Update () {
 		offerText.text="Offer Amount : " + recOfferAmount;
 	}
+
+	void offerHasBeenSelected () {
+		offerSelected = true;
+	}
 }

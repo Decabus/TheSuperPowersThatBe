@@ -18,4 +18,8 @@ public class DisplayMilitaryOffer : MonoBehaviour {
 	void Update () {
 		offerText.text="Offer Amount : " + milOfferAmount;
 	}
+
+	void offerHasBeenSelected () {
+		offerSelected = true;
+	}
 }

@@ -18,4 +18,8 @@ public class DisplayMediaOffer : MonoBehaviour {
 	void Update () {
 		offerText.text="Offer Amount : " + medOfferAmount;
 	}
+
+	void offerHasBeenSelected () {
+		offerSelected = true;
+	}
 }
