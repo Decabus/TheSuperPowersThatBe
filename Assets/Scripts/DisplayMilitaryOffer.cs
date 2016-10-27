@@ -40,7 +40,7 @@ public class DisplayMilitaryOffer : MonoBehaviour {
 			bizAmout = 0;
 			awarenessAmount = 2;
 			//offerText = gameObject.GetComponent<Text>();
-			offerText.text="Offer Amount : " + milOfferAmount;
+			offerText.text="Offer \n \n \n " + bizAmout + " Commerce" + "\n " + civAmout + "Civil" + "\n " + awarenessAmount + "% Awareness";
 		}
 	}
 
@@ -51,7 +51,7 @@ public class DisplayMilitaryOffer : MonoBehaviour {
 			bizAmout = -1;
 			awarenessAmount = 4;
 			//offerText = gameObject.GetComponent<Text>();
-			offerText.text="We will offer you : " + milOfferAmount;
+			offerText.text="Offer \n \n \n " + bizAmout + " Commerce" + "\n " + civAmout + "Civil" + "\n " + awarenessAmount + "% Awareness";
 		}
 	}
 
@@ -62,7 +62,7 @@ public class DisplayMilitaryOffer : MonoBehaviour {
 			bizAmout = 3;
 			awarenessAmount = 0;
 			//offerText = gameObject.GetComponent<Text>();
-			offerText.text="How does : " + milOfferAmount +" sound to you?";
+			offerText.text="Offer \n \n \n " + bizAmout + " Commerce" + "\n " + civAmout + "Civil" + "\n " + awarenessAmount + "% Awareness";
 		}
 	}
 }

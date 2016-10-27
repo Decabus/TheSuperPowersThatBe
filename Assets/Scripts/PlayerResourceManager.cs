@@ -19,11 +19,11 @@ public class PlayerResourceManager : MonoBehaviour {
 	public static int playerResourceAmount=0;
 	public static int cost=0;
 
-	public int globalBusinessAffiliation;
-	public int globalCivilAffiliation;
-	public int globalAwareness;
+	public int globalBusinessAffiliation=0;
+	public int globalCivilAffiliation=0;
+	public int globalAwareness=0;
 
-	public int playerAffiliation;
+	public int playerAffiliation=0;
 
 	//public static bool bussSelected;
 	//public static bool civSelected;
@@ -33,7 +33,7 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//playerResourcesText = gameObject.GetComponent<Text>();
+		playerResourcesText = gameObject.GetComponent<Text>();
 		//playerResourcesText.text="Credits: "+playerResourceAmount;
 		gameManager = GameObject.Find("_GameManager").GetComponent<GameManager>();
 	}
@@ -68,11 +68,21 @@ public class PlayerResourceManager : MonoBehaviour {
 	void businessSelected () {
 		if (DisplayBusinessOffer.offerSelected == true) {
 			playerResourcesText.text="Credits: "+playerResourceAmount;
+			Debug.Log("PRICE");
 			playerResourceAmount = playerResourceAmount + DisplayBusinessOffer.bussOfferAmount;
+			Debug.Log("SET PRICE");
 			globalBusinessAffiliation += DisplayBusinessOffer.bizAmout;
+			Debug.Log("SET BIZ");
 			globalCivilAffiliation += DisplayBusinessOffer.civAmout;
+			Debug.Log("SET CIV");
 			globalAwareness += DisplayBusinessOffer.awarenessAmount;
+			Debug.Log("SET AWARENESS");
 			DisplayBusinessOffer.offerSelected = false;
+			Debug.Log("player" + playerResourceAmount);
+			Debug.Log("buss" + globalBusinessAffiliation);
+			Debug.Log("civ" + globalCivilAffiliation);
+			Debug.Log("awar" + globalAwareness);
+			//Debug.Log(awarenessSlider.value);
 		}
 	}
 

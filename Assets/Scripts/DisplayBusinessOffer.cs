@@ -11,7 +11,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 	public static int awarenessAmount;
 	public static bool offerSelected = false;
 	//public int [] values;
-	public int randomNumber;
+	private int randomNumber;
 
 	//values = new float[3];
 	//values[1] = 1;
@@ -19,7 +19,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		randomNumber = Random.Range (1, 3);
+		randomNumber = Random.Range (1, 4);
 		Debug.Log (randomNumber);
 
 		offerText = gameObject.GetComponent<Text>();
@@ -45,7 +45,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 			bizAmout = 1;
 			awarenessAmount = 0;
 			//offerText = gameObject.GetComponent<Text>();
-			offerText.text="Offer Amount \n dave \n steve \n pete : " + bussOfferAmount;
+			offerText.text="Offer \n \n \n " + bizAmout + " Commerce" + "\n " + civAmout + "Civil" + "\n " + awarenessAmount + "% Awareness";
 		}
 	}
 
@@ -56,7 +56,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 			bizAmout = 2;
 			awarenessAmount = 5;
 			//offerText = gameObject.GetComponent<Text>();
-			offerText.text="Offer Amount \n dave \n steve \n pete :"  + bussOfferAmount;
+			offerText.text="Offer \n \n \n " + bizAmout + " Commerce" + "\n " + civAmout + "Civil" + "\n " + awarenessAmount + "% Awareness";
 		}
 	}
 
@@ -67,7 +67,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 			bizAmout = 3;
 			awarenessAmount = 3;
 			//offerText = gameObject.GetComponent<Text>();
-			offerText.text="Offer Amount \n dave \n steve \n pete : " + bussOfferAmount +" sound to you?";
+			offerText.text="Offer \n \n \n " + bizAmout + " Commerce" + "\n " + civAmout + "Civil" + "\n " + awarenessAmount + "% Awareness";
 		}
 	}
 }
