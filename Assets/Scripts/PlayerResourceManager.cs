@@ -19,6 +19,8 @@ public class PlayerResourceManager : MonoBehaviour {
 	public static int playerResourceAmount=0;
 	public static int cost=0;
 
+	private int globalAffilation;
+
 	public int globalBusinessAffiliation;
 	public int globalCivilAffiliation;
 	public int globalAwareness;
