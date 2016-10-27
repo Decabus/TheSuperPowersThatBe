@@ -19,17 +19,11 @@ public class PlayerResourceManager : MonoBehaviour {
 	public static int playerResourceAmount=0;
 	public static int cost=0;
 
-<<<<<<< HEAD
 	public int globalBusinessAffiliation=0;
 	public int globalCivilAffiliation=0;
 	public int globalAwareness=0;
-=======
-	private int globalAffilation;
 
-	public int globalBusinessAffiliation;
-	public int globalCivilAffiliation;
-	public int globalAwareness;
->>>>>>> origin/GUI-System
+	private int globalAffilation;
 
 	public int playerAffiliation=0;
 
