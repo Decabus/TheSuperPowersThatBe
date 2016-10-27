@@ -11,7 +11,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 	public static int awarenessAmount;
 	public static bool offerSelected = false;
 	//public int [] values;
-	private int randomNumber;
+	public int randomNumber=5;
 
 	//values = new float[3];
 	//values[1] = 1;
@@ -20,7 +20,7 @@ public class DisplayBusinessOffer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		randomNumber = Random.Range (1, 4);
-		Debug.Log (randomNumber);
+		Debug.Log ("buss" + randomNumber);
 
 		offerText = gameObject.GetComponent<Text>();
 		//offerText.text="Offer Amount : " + bussOfferAmount;
