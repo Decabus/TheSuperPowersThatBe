@@ -57,6 +57,13 @@ public class PlayrLookAt : MonoBehaviour{
 					//TODO: Either return new dialogue or destroy the canvas.
 					toggleMediaBool();
 				}
+			} else if (hit.collider.tag == "DistrictPolitician") {
+				//TODO: Button changes colour on scroll, and on click down.
+				if (Input.GetMouseButtonUp(0)) {
+					Debug.Log ("PRESSED A POLITICIAN BOTTON");
+					//TODO: Either return new dialogue or destroy the canvas.
+					toggleDistrictPoliticiansBool();
+				}
 			}
 		}
 	}
@@ -79,5 +86,9 @@ public class PlayrLookAt : MonoBehaviour{
 
 	void toggleMediaBool () {
 		DisplayMediaOffer.offerSelected = true;
+	}
+
+	void toggleDistrictPoliticiansBool () {
+		DistrictPoliticians.offerSelected = true;
 	}
 }

@@ -6,6 +6,7 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	Text playerResourcesText;
 	public static int playerResourceAmount=0;
+	public static int cost=0;
 	//public static bool bussSelected;
 	//public static bool civSelected;
 	//public static bool recSelected;
@@ -30,7 +31,11 @@ public class PlayerResourceManager : MonoBehaviour {
 
 		mediaSelected();
 
+		districtPoliticianSelected();
+
 		playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+
+		cost = DistrictPoliticians.politician1Cost;
 	}
 
 	void businessSelected () {
@@ -70,6 +75,14 @@ public class PlayerResourceManager : MonoBehaviour {
 			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
 			playerResourceAmount = playerResourceAmount + DisplayMediaOffer.medOfferAmount;
 			DisplayMediaOffer.offerSelected = false;
+		}
+	}
+
+	void districtPoliticianSelected () {
+		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
+			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
+			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician1Cost;
+			DistrictPoliticians.offerSelected = false;
 		}
 	}
 }
