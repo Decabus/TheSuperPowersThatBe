@@ -28,8 +28,18 @@ public class MapDistricts : MonoBehaviour{
 	public Politician winner;
 
 	private PlayerResourceManager RS;
+	private MetricsHolder MH;
 
 	private bool selected;
+
+	[SerializeField]
+	private int addCampaignCost;
+
+	[SerializeField]
+	private int invesetmentCost;
+
+	[SerializeField]
+	private int assassinationCost;
 
 	string[] alphabet = { "Davis ", "Luke ", "Decan ",  "Joseff ", "Aramat ", "Arstok ", "Grant ", "Welkin ", "Vargas ", "Fenn ", "Parker "};
 
@@ -48,11 +58,21 @@ public class MapDistricts : MonoBehaviour{
 	[SerializeField]
 	List<Button> selectButtons;
 
+	[SerializeField]
+	Button campaignButton;
+
+	[SerializeField]
+	Button investButton;
+
+	[SerializeField]
+	Button assButton;
+
 	Round2Manager r2M;
 
 	void Start(){
 		r2M = GameObject.Find ("Stage2Canvas").GetComponent<Round2Manager> ();
 		RS = GameObject.Find ("_PlayerResourcesManager").GetComponent<PlayerResourceManager> ();
+		MH = GameObject.Find ("_ResourceHolder").GetComponent<MetricsHolder> ();
 
 		districtAffiliation = Random.Range (30, 60);
 
@@ -102,15 +122,39 @@ public class MapDistricts : MonoBehaviour{
 
 	//**ACTIONBUTTONS**
 	public void addCampaign(){
-		
+		if (MH.playerResourceAmount > addCampaignCost) {
+			districtAffiliation += 10;
+			MH.playerResourceAmount -= addCampaignCost;
+			campaignButton.interactable = false;
+			assButton.interactable = false;
+			investButton.interactable = false;
+
+			distBizAff = districtAffiliation;
+			distCivAff = 100 - districtAffiliation;
+		}
 	}
 		
 	public void Assassination(){
-
+		if (MH.playerResourceAmount > assassinationCost) {
+			MH.globalAwareness -= 15;
+			MH.playerResourceAmount -= assassinationCost;
+			campaignButton.interactable = false;
+			assButton.interactable = false;
+			investButton.interactable = false;
+		}
 	}
 
 	public void investments(){
+		if (MH.playerResourceAmount > invesetmentCost) {
+			districtAffiliation -= 10;
+			MH.playerResourceAmount -= invesetmentCost;
+			campaignButton.interactable = false;
+			assButton.interactable = false;
+			investButton.interactable = false;
 
+			distBizAff = districtAffiliation;
+			distCivAff = 100 - districtAffiliation;
+		}
 	}
 
 	void DisplayPols(){
@@ -131,11 +175,11 @@ public class MapDistricts : MonoBehaviour{
 	}
 
 	public void SelectCandidate(int num){
-		if (RS.playerResourceAmount > candidates [num].cost && !selected) {
+		if (MH.playerResourceAmount > candidates [num].cost && !selected) {
 			chosenCandidate = candidates [num];
 			candidatesText.text = chosenCandidate.name + " Has been chosen for this election.";
 			selected = true;
-			RS.playerResourceAmount -= candidates [num].cost;
+			MH.playerResourceAmount -= candidates [num].cost;
 			foreach (Button b in selectButtons) {
 				Destroy (b);
 				b.GetComponent<Image> ().enabled = false;
@@ -170,6 +214,7 @@ public class MapDistricts : MonoBehaviour{
 		}
 			
 		districtAffiliation += winner.bizModifier;
+		districtAffiliation -= winner.civModifier;
 
 		distBizAff = districtAffiliation;
 		distCivAff = 100 - districtAffiliation;
