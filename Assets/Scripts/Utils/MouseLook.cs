@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 [AddComponentMenu("Camera-Control/Mouse Look")]
 public class MouseLook : MonoBehaviour {
+	public GUITexture gt;
 
 	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 	public RotationAxes axes = RotationAxes.MouseXAndY;
@@ -39,6 +40,8 @@ public class MouseLook : MonoBehaviour {
 		if (rb)
 			rb.freezeRotation = true;
 		originalRotation = transform.localRotation;
+
+		Screen.lockCursor = true;
 	}
 
 	void Update ()
