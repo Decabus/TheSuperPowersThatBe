@@ -30,9 +30,4 @@ public class GUIDistricts : MonoBehaviour{
 		actionsTab.SetActive (false);
 		candidatesTab.SetActive (true);
 	}
-
-	//Update is called once per frame
-	void Update(){
-		
-	}
 }

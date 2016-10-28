@@ -16,7 +16,7 @@ public class PlayerResourceManager : MonoBehaviour {
 	Text awarenessSliderValue;
 
 
-	public static int playerResourceAmount=0;
+	public int playerResourceAmount=0;
 	public static int cost=0;
 
 	public int globalBusinessAffiliation=0;
@@ -26,6 +26,19 @@ public class PlayerResourceManager : MonoBehaviour {
 	private int globalAffilation;
 
 	public int playerAffiliation=0;
+
+	public static GameObject businessLight;
+	public static GameObject civilLight;
+	public static GameObject resourcesLight;
+	public static GameObject militaryLight;
+	public static GameObject mediaLight;
+
+	public GameObject spotlightDesk;
+	public GameObject spotlightPlayerDesk;
+	public GameObject tv;
+	public GameObject commenceButton;
+	public GameObject commenceText;
+
 
 	//public static bool bussSelected;
 	//public static bool civSelected;
@@ -38,6 +51,32 @@ public class PlayerResourceManager : MonoBehaviour {
 		//playerResourcesText = gameObject.GetComponent<Text>();
 		//playerResourcesText.text="Credits: "+playerResourceAmount;
 		gameManager = GameObject.Find("_GameManager").GetComponent<GameManager>();
+
+		businessLight = GameObject.Find("/_ART/Assets/BusinessLight");
+		businessLight.SetActive (true);
+
+		civilLight = GameObject.Find("/_ART/Assets/CivilLight");
+		civilLight.SetActive (true);
+
+		resourcesLight = GameObject.Find("/_ART/Assets/ResourcesLight");
+		resourcesLight.SetActive (true);
+
+		militaryLight = GameObject.Find("/_ART/Assets/MilitaryLight");
+		militaryLight.SetActive (true);
+
+		mediaLight = GameObject.Find("/_ART/Assets/MediaLight");
+		mediaLight.SetActive (true);
+
+		spotlightDesk = GameObject.Find("/_ART/_Lights/Spotlight_Desk");
+		spotlightDesk.SetActive (true);
+
+		spotlightPlayerDesk = GameObject.Find("/_ART/_Lights/Spotlight_PlayerDesk");
+		spotlightPlayerDesk.SetActive (false);
+
+		commenceButton = GameObject.Find("/_ART/Assets/Button");
+		commenceButton.SetActive (false);
+
+
 	}
 	
 	// Update is called once per frame
@@ -53,6 +92,8 @@ public class PlayerResourceManager : MonoBehaviour {
 		mediaSelected();
 
 		districtPolitician1Selected();
+
+		endRoundOne();
 
 		try{
 			playerResourcesText.text="Credits: "+playerResourceAmount;
@@ -91,6 +132,7 @@ public class PlayerResourceManager : MonoBehaviour {
 			Debug.Log("civ" + globalCivilAffiliation);
 			Debug.Log("awar" + globalAwareness);
 			//Debug.Log(awarenessSlider.value);
+			businessLight.SetActive (false);
 		}
 	}
 
@@ -102,6 +144,7 @@ public class PlayerResourceManager : MonoBehaviour {
 			globalCivilAffiliation += DisplayCivilOffer.civAmout;
 			globalAwareness +=  DisplayCivilOffer.awarenessAmount;
 			DisplayCivilOffer.offerSelected = false;
+			civilLight.SetActive (false);
 		}
 	}
 
@@ -113,6 +156,7 @@ public class PlayerResourceManager : MonoBehaviour {
 			globalCivilAffiliation += DisplayResourcesOffer.civAmout;
 			globalAwareness +=  DisplayResourcesOffer.awarenessAmount;
 			DisplayResourcesOffer.offerSelected = false;
+			resourcesLight.SetActive (false);
 		}
 	}
 
@@ -124,6 +168,8 @@ public class PlayerResourceManager : MonoBehaviour {
 			globalCivilAffiliation += DisplayMilitaryOffer.civAmout;
 			globalAwareness +=  DisplayMilitaryOffer.awarenessAmount;
 			DisplayMilitaryOffer.offerSelected = false;
+			militaryLight.SetActive (false);
+
 		}
 	}
 
@@ -135,6 +181,7 @@ public class PlayerResourceManager : MonoBehaviour {
 			globalCivilAffiliation += DisplayMediaOffer.civAmout;
 			globalAwareness +=  DisplayMediaOffer.awarenessAmount;
 			DisplayMediaOffer.offerSelected = false;
+			mediaLight.SetActive (false);
 		}
 	}
 
@@ -155,6 +202,16 @@ public class PlayerResourceManager : MonoBehaviour {
 		}
 	}
 
+	void endRoundOne () {
+		if (PlayrLookAt.optionsSelected == 5) {
+			spotlightDesk.SetActive (false);
+			//yield return new WaitForSeconds(1);
+			commenceButton.SetActive (true);
+			spotlightPlayerDesk.SetActive (true);
+			//yield return new WaitForSeconds(1);
+		}
+	}
+
 	public void onClickBribePolitician1 () {
 		Debug.Log("CLICKING!");
 		DistrictPoliticians.offerSelected = true;
@@ -172,6 +229,7 @@ public class PlayerResourceManager : MonoBehaviour {
 			playerResourcesText.text="Credits: "+playerResourceAmount;
 			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician2Cost;
 			DistrictPoliticians.offerSelected = false;
+
 		}
 	}
 
