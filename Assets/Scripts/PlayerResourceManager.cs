@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerResourceManager : MonoBehaviour {
 
 	GameManager gameManager;
+	MetricsHolder holder;
 
 	[SerializeField]
 	Text playerResourcesText;
+
+	[SerializeField]
+	Text mapResourcesText;
 
 	//[SerializeField]
 	//Slider awarenessSlider;
@@ -16,14 +21,14 @@ public class PlayerResourceManager : MonoBehaviour {
 	Text awarenessSliderValue;
 
 
-	public int playerResourceAmount=0;
+	//public int playerResourceAmount=0;
 	public static int cost=0;
 
 	public int globalBusinessAffiliation=0;
 	public int globalCivilAffiliation=0;
 	public int globalAwareness=0;
 
-	private int globalAffilation;
+	public int globalAffilation;
 
 	public int playerAffiliation=0;
 
@@ -46,11 +51,13 @@ public class PlayerResourceManager : MonoBehaviour {
 	//public static bool milSelected;
 	//public static bool medSelected;
 
+
 	// Use this for initialization
 	void Start () {
 		//playerResourcesText = gameObject.GetComponent<Text>();
 		//playerResourcesText.text="Credits: "+playerResourceAmount;
 		gameManager = GameObject.Find("_GameManager").GetComponent<GameManager>();
+		holder = GameObject.Find ("_ResourceHolder").GetComponent<MetricsHolder> ();
 
 		businessLight = GameObject.Find("/_ART/Assets/BusinessLight");
 		businessLight.SetActive (true);
@@ -95,11 +102,9 @@ public class PlayerResourceManager : MonoBehaviour {
 
 		endRoundOne();
 
-		awarenessSliderValue.text = "" + globalAwareness + "%";
+		awarenessSliderValue.text = "" + holder.globalAwareness + "%";
 
-		//awarenessSliderValue.text = (awarenessSlider.value * 100).ToString();
-		//Debug.Log(awarenessSlider.value);
-		//Debug.Log("Lordylord");
+		mapResourcesText.text = "Credits: " + holder.playerResourceAmount.ToString ();
 
 		//playerResourcesText.text = playerResourceAmount.ToString ();
 
@@ -112,22 +117,26 @@ public class PlayerResourceManager : MonoBehaviour {
 		//playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
 
 		cost = DistrictPoliticians.politician1Cost;
+
+		if (holder.globalAwareness >= 100) {
+			SceneManager.LoadScene ("EndScreen");
+		}
 	}
 
 	void businessSelected () {
 		if (DisplayBusinessOffer.offerSelected == true) {
-			playerResourcesText.text="Credits: "+playerResourceAmount;
+			playerResourcesText.text="Credits: "+ holder.playerResourceAmount;
 			Debug.Log("PRICE");
-			playerResourceAmount = playerResourceAmount + DisplayBusinessOffer.bussOfferAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount + DisplayBusinessOffer.bussOfferAmount;
 			Debug.Log("SET PRICE");
-			globalBusinessAffiliation += DisplayBusinessOffer.bizAmout;
+			holder.globalBusinessAffiliation += DisplayBusinessOffer.bizAmout;
 			Debug.Log("SET BIZ");
-			globalCivilAffiliation += DisplayBusinessOffer.civAmout;
+			holder.globalCivilAffiliation += DisplayBusinessOffer.civAmout;
 			Debug.Log("SET CIV");
-			globalAwareness += DisplayBusinessOffer.awarenessAmount;
+			holder.globalAwareness += DisplayBusinessOffer.awarenessAmount;
 			Debug.Log("SET AWARENESS");
 			DisplayBusinessOffer.offerSelected = false;
-			Debug.Log("player" + playerResourceAmount);
+			Debug.Log("player" + holder.playerResourceAmount);
 			Debug.Log("buss" + globalBusinessAffiliation);
 			Debug.Log("civ" + globalCivilAffiliation);
 			Debug.Log("awar" + globalAwareness);
@@ -138,11 +147,11 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	void civilSelected () {
 		if (DisplayCivilOffer.offerSelected == true) {
-			playerResourcesText.text="Credits: "+playerResourceAmount;
-			playerResourceAmount = playerResourceAmount + DisplayCivilOffer.civOfferAmount;
-			globalBusinessAffiliation += DisplayCivilOffer.bizAmout;
-			globalCivilAffiliation += DisplayCivilOffer.civAmout;
-			globalAwareness +=  DisplayCivilOffer.awarenessAmount;
+			playerResourcesText.text="Credits: "+holder.playerResourceAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount + DisplayCivilOffer.civOfferAmount;
+			holder.globalBusinessAffiliation += DisplayCivilOffer.bizAmout;
+			holder.globalCivilAffiliation += DisplayCivilOffer.civAmout;
+			holder.globalAwareness +=  DisplayCivilOffer.awarenessAmount;
 			DisplayCivilOffer.offerSelected = false;
 			civilLight.SetActive (false);
 		}
@@ -150,11 +159,11 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	void resourcesSelected () {
 		if (DisplayResourcesOffer.offerSelected == true) {
-			playerResourcesText.text="Credits: "+playerResourceAmount;
-			playerResourceAmount = playerResourceAmount + DisplayResourcesOffer.recOfferAmount;
-			globalBusinessAffiliation += DisplayResourcesOffer.bizAmout;
-			globalCivilAffiliation += DisplayResourcesOffer.civAmout;
-			globalAwareness +=  DisplayResourcesOffer.awarenessAmount;
+			playerResourcesText.text="Credits: "+holder.playerResourceAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount + DisplayResourcesOffer.recOfferAmount;
+			holder.globalBusinessAffiliation += DisplayResourcesOffer.bizAmout;
+			holder.globalCivilAffiliation += DisplayResourcesOffer.civAmout;
+			holder.globalAwareness +=  DisplayResourcesOffer.awarenessAmount;
 			DisplayResourcesOffer.offerSelected = false;
 			resourcesLight.SetActive (false);
 		}
@@ -162,11 +171,11 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	void militarySelected () {
 		if (DisplayMilitaryOffer.offerSelected == true) {
-			playerResourcesText.text="Credits: "+playerResourceAmount;
-			playerResourceAmount = playerResourceAmount + DisplayMilitaryOffer.milOfferAmount;
-			globalBusinessAffiliation += DisplayMilitaryOffer.bizAmout;
-			globalCivilAffiliation += DisplayMilitaryOffer.civAmout;
-			globalAwareness +=  DisplayMilitaryOffer.awarenessAmount;
+			playerResourcesText.text="Credits: "+holder.playerResourceAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount + DisplayMilitaryOffer.milOfferAmount;
+			holder.globalBusinessAffiliation += DisplayMilitaryOffer.bizAmout;
+			holder.globalCivilAffiliation += DisplayMilitaryOffer.civAmout;
+			holder.globalAwareness +=  DisplayMilitaryOffer.awarenessAmount;
 			DisplayMilitaryOffer.offerSelected = false;
 			militaryLight.SetActive (false);
 
@@ -175,29 +184,29 @@ public class PlayerResourceManager : MonoBehaviour {
 
 	void mediaSelected () {
 		  if (DisplayMediaOffer.offerSelected == true) {
-			playerResourcesText.text="Credits: "+playerResourceAmount;
-			playerResourceAmount = playerResourceAmount + DisplayMediaOffer.medOfferAmount;
-			globalBusinessAffiliation += DisplayMediaOffer.bizAmout;
-			globalCivilAffiliation += DisplayMediaOffer.civAmout;
-			globalAwareness +=  DisplayMediaOffer.awarenessAmount;
+			playerResourcesText.text="Credits: "+holder.playerResourceAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount + DisplayMediaOffer.medOfferAmount;
+			holder.globalBusinessAffiliation += DisplayMediaOffer.bizAmout;
+			holder.globalCivilAffiliation += DisplayMediaOffer.civAmout;
+			holder.globalAwareness +=  DisplayMediaOffer.awarenessAmount;
 			DisplayMediaOffer.offerSelected = false;
 			mediaLight.SetActive (false);
 		}
 	}
 
 	void districtPoliticianSelected () {
-		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
-			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
-			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician1Cost;
+		if (DistrictPoliticians.offerSelected == true && holder.playerResourceAmount >= cost) {
+			playerResourcesText.text="Amount of Resources : " + holder.playerResourceAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount - DistrictPoliticians.politician1Cost;
 			DistrictPoliticians.offerSelected = false;
 		}
 	}
 
 
 	void districtPolitician1Selected () {
-		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
-			playerResourcesText.text="Amount of Resources : " + playerResourceAmount;
-			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician1Cost;
+		if (DistrictPoliticians.offerSelected == true && holder.playerResourceAmount >= cost) {
+			playerResourcesText.text="Amount of Resources : " + holder.playerResourceAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount - DistrictPoliticians.politician1Cost;
 			DistrictPoliticians.offerSelected = false;
 		}
 	}
@@ -216,9 +225,9 @@ public class PlayerResourceManager : MonoBehaviour {
 	public void onClickBribePolitician1 () {
 		Debug.Log("CLICKING!");
 		DistrictPoliticians.offerSelected = true;
-		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
-			playerResourcesText.text="Credits: "+playerResourceAmount;
-			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician1Cost;
+		if (DistrictPoliticians.offerSelected == true && holder.playerResourceAmount >= cost) {
+			playerResourcesText.text="Credits: "+holder.playerResourceAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount - DistrictPoliticians.politician1Cost;
 			DistrictPoliticians.offerSelected = false;
 		}
 	}
@@ -226,9 +235,9 @@ public class PlayerResourceManager : MonoBehaviour {
 	public void onClickBribePolitician2 () {
 		Debug.Log("CLICKING!");
 		DistrictPoliticians.offerSelected = true;
-		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
-			playerResourcesText.text="Credits: "+playerResourceAmount;
-			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician2Cost;
+		if (DistrictPoliticians.offerSelected == true && holder.playerResourceAmount >= cost) {
+			playerResourcesText.text="Credits: "+holder.playerResourceAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount - DistrictPoliticians.politician2Cost;
 			DistrictPoliticians.offerSelected = false;
 
 		}
@@ -237,9 +246,9 @@ public class PlayerResourceManager : MonoBehaviour {
 	public void onClickBribePolitician3 () {
 		Debug.Log("CLICKING!");
 		DistrictPoliticians.offerSelected = true;
-		if (DistrictPoliticians.offerSelected == true && playerResourceAmount >= cost) {
-			playerResourcesText.text="Credits: "+playerResourceAmount;
-			playerResourceAmount = playerResourceAmount - DistrictPoliticians.politician3Cost;
+		if (DistrictPoliticians.offerSelected == true && holder.playerResourceAmount >= cost) {
+			playerResourcesText.text="Credits: "+holder.playerResourceAmount;
+			holder.playerResourceAmount = holder.playerResourceAmount - DistrictPoliticians.politician3Cost;
 			DistrictPoliticians.offerSelected = false;
 		}
 	}

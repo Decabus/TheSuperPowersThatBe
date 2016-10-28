@@ -16,6 +16,8 @@ public class Round2Manager : MonoBehaviour {
 
 	//public GameObject activePanel;
 
+	private MetricsHolder holder;
+
 	[SerializeField]
 	private List<GameObject> panels;
 
@@ -29,10 +31,14 @@ public class Round2Manager : MonoBehaviour {
 	[SerializeField]
 	private Slider affiliationSlider;
 
+	[SerializeField]
+	private Button commenceButton;
+
 	void Start(){
 		RS = GameObject.Find ("_PlayerResourcesManager").GetComponent<PlayerResourceManager> ();
+		holder = GameObject.Find ("_ResourceHolder").GetComponent<MetricsHolder> ();
+		totalGlobalAffiliation = holder.globalAffilation;
 		CalcTotalAff ();
-
 	}
 		
 	void FixedUpdate(){
@@ -40,10 +46,15 @@ public class Round2Manager : MonoBehaviour {
 
 		//Running Elections up the wazoo
 		if (Input.GetKeyUp(KeyCode.A)) {
-			foreach (MapDistricts d in districts) {
-				StartCoroutine (electionCycle ());
-			}
+			//foreach (MapDistricts d in districts) {
+				//StartCoroutine (electionCycle ());
+			//}
 		}
+	}
+
+	public void election(){
+		StartCoroutine (electionCycle ());
+		commenceButton.interactable = false;
 	}
 
 	public void CalcTotalAff(){
@@ -84,6 +95,7 @@ public class Round2Manager : MonoBehaviour {
 			yield return new WaitForSeconds (0.5f);
 			d.election ();
 			CalcTotalAff ();
+			holder.globalAffilation = totalGlobalAffiliation;
 		}
 	}
 
