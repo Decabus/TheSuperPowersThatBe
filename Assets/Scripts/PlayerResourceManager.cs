@@ -16,7 +16,7 @@ public class PlayerResourceManager : MonoBehaviour {
 	Text awarenessSliderValue;
 
 
-	public static int playerResourceAmount=0;
+	public int playerResourceAmount=0;
 	public static int cost=0;
 
 	public int globalBusinessAffiliation=0;
