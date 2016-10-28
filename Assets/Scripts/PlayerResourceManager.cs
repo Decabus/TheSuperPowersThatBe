@@ -9,8 +9,8 @@ public class PlayerResourceManager : MonoBehaviour {
 	[SerializeField]
 	Text playerResourcesText;
 
-	[SerializeField]
-	Slider awarenessSlider;
+	//[SerializeField]
+	//Slider awarenessSlider;
 
 	[SerializeField]
 	Text awarenessSliderValue;
@@ -95,18 +95,16 @@ public class PlayerResourceManager : MonoBehaviour {
 
 		endRoundOne();
 
-		try{
-			playerResourcesText.text="Credits: "+playerResourceAmount;
-			awarenessSliderValue.text = "" + globalAwareness + "%";
-			//awarenessSliderValue.text = (awarenessSlider.value * 100).ToString();
-			//Debug.Log(awarenessSlider.value);
-			Debug.Log("Lordylord");
-		}
-		catch{
-		}
+		awarenessSliderValue.text = "" + globalAwareness + "%";
+
+		//awarenessSliderValue.text = (awarenessSlider.value * 100).ToString();
+		//Debug.Log(awarenessSlider.value);
+		//Debug.Log("Lordylord");
+
+		//playerResourcesText.text = playerResourceAmount.ToString ();
 
 		cost = DistrictPoliticians.politician1Cost;
-		Debug.Log("Luke was wrong");
+		//Debug.Log("Luke was wrong");
 
 		//onClick();
 		districtPoliticianSelected();

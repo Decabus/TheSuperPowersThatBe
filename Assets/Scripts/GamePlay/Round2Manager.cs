@@ -32,6 +32,7 @@ public class Round2Manager : MonoBehaviour {
 	void Start(){
 		RS = GameObject.Find ("_PlayerResourcesManager").GetComponent<PlayerResourceManager> ();
 		CalcTotalAff ();
+
 	}
 		
 	void FixedUpdate(){
@@ -52,7 +53,7 @@ public class Round2Manager : MonoBehaviour {
 
 			int toAdd = biz - (civ -3);
 
-			Debug.Log ("ToAdd is " + toAdd);
+			//Debug.Log ("ToAdd is " + toAdd);
 
 			totalGlobalAffiliation += toAdd/3;
 		}
