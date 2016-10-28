@@ -97,14 +97,16 @@ public class PlayerResourceManager : MonoBehaviour {
 
 		try{
 			playerResourcesText.text="Credits: "+playerResourceAmount;
-			awarenessSlider.value = (float)globalAwareness/100;
-			awarenessSliderValue.text = (awarenessSlider.value * 100).ToString();
+			awarenessSliderValue.text = "" + globalAwareness + "%";
+			//awarenessSliderValue.text = (awarenessSlider.value * 100).ToString();
 			//Debug.Log(awarenessSlider.value);
+			Debug.Log("Lordylord");
 		}
 		catch{
 		}
 
 		cost = DistrictPoliticians.politician1Cost;
+		Debug.Log("Luke was wrong");
 
 		//onClick();
 		districtPoliticianSelected();
