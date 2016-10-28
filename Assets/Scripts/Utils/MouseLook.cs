@@ -41,7 +41,7 @@ public class MouseLook : MonoBehaviour {
 			rb.freezeRotation = true;
 		originalRotation = transform.localRotation;
 
-		Screen.lockCursor = true;
+		//Screen.lockCursor = true;
 	}
 
 	void Update ()
