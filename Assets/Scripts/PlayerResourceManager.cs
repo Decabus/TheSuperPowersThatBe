@@ -207,6 +207,7 @@ public class PlayerResourceManager : MonoBehaviour {
 			spotlightDesk.SetActive (false);
 			//yield return new WaitForSeconds(1);
 			commenceButton.SetActive (true);
+			commenceText.SetActive (true);
 			spotlightPlayerDesk.SetActive (true);
 			//yield return new WaitForSeconds(1);
 		}
